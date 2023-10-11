@@ -13,7 +13,7 @@ public:
     virtual bool empty() const = 0;
     virtual int size() const = 0;
 
-    virtual ~List() {}
+    virtual ~List() {} 
 };
 
 #endif
