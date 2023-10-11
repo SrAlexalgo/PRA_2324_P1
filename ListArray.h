@@ -2,17 +2,16 @@
 #define LISTARRAY_H
 
 #include "List.h"
-#include <iostream> // Incluye la cabecera para la sobrecarga del operador <<
+#include <iostream>
 
 template <typename T>
 class ListArray : public List<T> {
 private:
-    T* arr;             // Puntero al inicio del array
-    int max;            // Tamaño actual del array
-    int n;              // Número de elementos en la lista
-    static const int MINSIZE = 2; // Tamaño mínimo del array (inicializado a 2)
+    T* arr;             
+    int max;            
+    int n;              
+    static const int MINSIZE = 2; 
 
-    // Método privado para redimensionar el array
     void resize(int new_size) {
         T* new_arr = new T[new_size];
         for (int i = 0; i < n; ++i) {
@@ -24,19 +23,16 @@ private:
     }
 
 public:
-    // Constructor
     ListArray() {
         max = MINSIZE;
         n = 0;
         arr = new T[max];
     }
 
-    // Destructor
     ~ListArray() {
         delete[] arr;
     }
 
-    // Métodos heredados de la interfaz List<T>
     void insert(int pos, T e) override {
         if (pos < 0 || pos > n) {
             throw std::out_of_range("Posición no válida");
@@ -52,11 +48,11 @@ public:
     }
 
     void append(T e) override {
-        insert(n, e); // Inserta al final
+        insert(n, e); 
     }
 
     void prepend(T e) override {
-        insert(0, e); // Inserta al principio
+        insert(0, e); 
     }
 
     T remove(int pos) override {
@@ -69,7 +65,7 @@ public:
         }
         n--;
         if (n < max / 4 && max > MINSIZE) {
-            resize(max / 2); // Reduce la capacidad si está "demasiado vacío"
+            resize(max / 2);
         }
         return removed;
     }
@@ -84,10 +80,10 @@ public:
     int search(T e) const override {
         for (int i = 0; i < n; ++i) {
             if (arr[i] == e) {
-                return i; // Devuelve la posición si se encuentra.
+                return i; 
             }
         }
-        return -1; // Devuelve -1 si no se encuentra.
+        return -1; 
     }
 
     bool empty() const override {
@@ -98,7 +94,6 @@ public:
         return n;
     }
 
-    // Sobrecarga del operador []
     T operator[](int pos) {
         if (pos < 0 || pos >= n) {
             throw std::out_of_range("Posición no válida");
@@ -106,7 +101,6 @@ public:
         return arr[pos];
     }
 
-    // Sobrecarga del operador << para imprimir la lista
     friend std::ostream& operator<<(std::ostream& out, const ListArray<T>& list) {
         out << "[";
         for (int i = 0; i < list.n; ++i) {

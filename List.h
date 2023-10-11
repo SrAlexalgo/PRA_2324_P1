@@ -13,7 +13,7 @@ public:
     virtual bool empty() const = 0;
     virtual int size() const = 0;
 
-    virtual ~List() {} // Destructor virtual para la clase.
+    virtual ~List() {}
 };
 
 #endif
