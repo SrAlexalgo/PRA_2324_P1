@@ -14,7 +14,7 @@ private:
 
     void resize(int new_size) {
         T* new_arr = new T[new_size];
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; i++) {
             new_arr[i] = arr[i];
         }
         delete[] arr;
@@ -40,7 +40,7 @@ public:
         if (n == max) {
             resize(max * 2); // Duplica la capacidad si está llena
         }
-        for (int i = n; i > pos; --i) {
+        for (int i = n; i > pos; i--) {
             arr[i] = arr[i - 1];
         }
         arr[pos] = e;
@@ -60,7 +60,7 @@ public:
             throw std::out_of_range("Posición no válida");
         }
         T removed = arr[pos];
-        for (int i = pos; i < n - 1; ++i) {
+        for (int i = pos; i < n - 1; i++) {
             arr[i] = arr[i + 1];
         }
         n--;
@@ -78,7 +78,7 @@ public:
     }
 
     int search(T e) const override {
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; i++) {
             if (arr[i] == e) {
                 return i; 
             }
@@ -103,7 +103,7 @@ public:
 
     friend std::ostream& operator<<(std::ostream& out, const ListArray<T>& list) {
         out << "[";
-        for (int i = 0; i < list.n; ++i) {
+        for (int i = 0; i < list.n; i++) {
             out << list.arr[i];
             if (i < list.n - 1) {
                 out << ", ";
