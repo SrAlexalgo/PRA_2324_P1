@@ -38,7 +38,7 @@ public:
             throw std::out_of_range("Posición no válida");
         }
         if (n == max) {
-            resize(max * 2); // Duplica la capacidad si está llena
+            resize(max * 2); 
         }
         for (int i = n; i > pos; i--) {
             arr[i] = arr[i - 1];
