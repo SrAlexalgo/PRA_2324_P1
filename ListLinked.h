@@ -36,7 +36,7 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const ListLinked<T>& list) {
         out << "[";
         Node<T>* current = list.first;
-        for (int i = 0; i < list.n; ++i) {
+        for (int i = 0; i < list.n; i++) {
             out << current->data;
             if (i < list.n - 1) {
                 out << ", ";
